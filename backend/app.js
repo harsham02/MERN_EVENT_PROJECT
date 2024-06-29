@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
     });
 });
 app.use("/api/v1/message",messageRouter);
+
+app.options('*', cors(corsOptions));
 dbConnection();
 
 export default app;
