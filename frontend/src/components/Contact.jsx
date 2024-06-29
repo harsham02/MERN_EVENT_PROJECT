@@ -10,8 +10,7 @@ const Contact = () => {
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
-    await axios.post(
-        "https://mern-event-project.onrender.com/api/v1/message/send",
+    await axios.post("https://mern-event-project.onrender.com/api/v1/message/send",
         {
           name,
           email,
