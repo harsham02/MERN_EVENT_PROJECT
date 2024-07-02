@@ -8,12 +8,13 @@ const app = express();
 
 dotenv.config({path : "./config/config.env"});
 
+app.use(cors({
+    origin:  process.env.FRONTEND_URL, 
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+  }));
 
-const corsOptions = {
-    origin: 'https://mern-event-project.vercel.app',
-    Credentials: true,
-};
-app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended : true}));
@@ -25,9 +26,7 @@ app.get("/", (req, res) => {
         message: "HELLO WORLD!",
     });
 });
-app.use("/api/v1/message",messageRouter);
-
-app.options('*', cors(corsOptions));
+app.use("/message",messageRouter);
 dbConnection();
 
 export default app;

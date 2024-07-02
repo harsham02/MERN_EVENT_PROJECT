@@ -10,7 +10,7 @@ export const sendMessage = async (req, res) => {
                 message: "All fields are required!",
             });
         }
-
+        
         await Message.create({ name, email, subject, message });
 
         return res.status(200).json({
